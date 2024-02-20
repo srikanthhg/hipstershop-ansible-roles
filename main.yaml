@@ -3,8 +3,8 @@
   vars_files:
   - variables.yaml
   become: yes
-  gather_facts: yes
+  #gather_facts: yes
   #become_user: ec2-user
-  become_method: su
+  #become_method: su
   roles:
   - "{{component}}"
