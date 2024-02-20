@@ -11,7 +11,7 @@
 - name: install nodejs 
   ansible.builtin.import_role:
     name: common
-    tasks_from: nodejssetup
+    tasks_from: nodesetup
 
 - name: setup systemd
   ansible.builtin.import_role:
