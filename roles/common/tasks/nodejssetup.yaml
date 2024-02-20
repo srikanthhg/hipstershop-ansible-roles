@@ -1,0 +1,31 @@
+- name: download and install nvm
+  ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash"
+  register: nvm_install_result
+
+# #{{ansible_env.HOME}} refers to the home directory of the user running the Ansible playbook on the target system. It retrieves the value of the HOME environment variable for that user.
+# - name: Display result
+#   debug:
+#     msg: "{{ansible_env.HOME}}"
+
+- name: nvm downloaded or not
+  debug:
+    msg: "{{nvm_install_result}}"
+
+- name: Activate nvm
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh"
+  when: nvm_install_result.rc == 0
+
+- name: Set execute permission on nvm.sh
+  file:
+    path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    mode: "+x"
+
+- name: install nvm
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.nvm/nvm.sh install --lts"
+  when: nvm_install_result.rc == 0
+    
+- name: Install dependencies
+  become: yes
+  ansible.builtin.shell: "npm install"
+  args:
+    chdir: /app/

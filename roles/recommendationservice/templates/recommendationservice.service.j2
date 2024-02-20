@@ -1,0 +1,16 @@
+[Unit]
+Description=recommendation
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+Environment=DISABLE_PROFILER=1
+Environment=PYTHONUNBUFFERED=1
+Environment=PRODUCT_CATALOG_SERVICE_ADDR={{PRODUCT_CATALOG_SERVICE_ADDR}}:3550
+Environment=PORT=8080
+
+ExecStart=python3.12 /app/recommendation_server.py
+SyslogIdentifier=recommendationservice
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+- name: download java 19
+  ansible.builtin.get_url: https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.rpm
+  dest: /tmp/jdk-19.0.2_linux-x64_bin.rpm
+
+- name: install java
+  ansible.builtin.package:
+    name: /tmp/jdk-19.0.2_linux-x64_bin.rpm
+    state: present
+
+- name: execute permissions
+  ansible.builtin.file:
+  src: /app/gradlew
+  mode: +x
+
+- name: download repos and install dist
+  ansible.builtin.command:
+    cmd: "{{ item }}"
+    with_items: 
+    - "./gradlew downloadRepos"
+    - "./gradlew installDist"
+  args:
+    chdir: /app
+

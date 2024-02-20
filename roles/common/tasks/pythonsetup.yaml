@@ -1,0 +1,41 @@
+- name: Download python source tarball
+  ansible.builtin.get_url: 
+    url: https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz
+    dest: /tmp/Python-3.12.2.tgz
+
+- name: extract python source
+  ansible.builtin.unarchive:
+    src: /tmp/Python-3.12.2.tgz
+    dest: /tmp
+    remote_src: yes
+
+- name: Install development tools
+  ansible.builtin.command:
+    cmd: yum groupinstall "Development Tools" -y
+  
+
+- name: install required dependencies
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - "gcc"
+    - "openssl-devel"
+    - "bzip2-devel"
+    - "libffi-devel"
+    - "gcc-c++"
+
+- name: configure python build
+  ansible.builtin.command:
+    cmd: "{{ item }}" 
+    chdir: /tmp/Python-3.12.2
+  with_items:
+    - ./configure
+    - make
+    - "make altinstall"
+
+- name: install dependencies and build
+  ansible.builtin.command: pip3.12 install -r requirements.txt
+  args:
+    chdir: /app
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=currency
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+Environment=PORT=7000
+Environment=DISABLE_PROFILER=1
+
+ExecStart=node /app/server.js
+SyslogIdentifier=currencyservice
+
+[Install]
+WantedBy=multi-user.target

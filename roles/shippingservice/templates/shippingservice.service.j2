@@ -1,0 +1,14 @@
+[Unit]
+Description=shipping
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+Environment=DISABLE_PROFILER=1
+Environment=PORT=50051
+
+ExecStart=/app/myshipping
+SyslogIdentifier=shippingservice
+
+[Install]
+WantedBy=multi-user.target

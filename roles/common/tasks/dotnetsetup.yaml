@@ -1,0 +1,37 @@
+- name: Download dotnet-install.sh script
+  get_url:
+    url: https://dot.net/v1/dotnet-install.sh
+    dest: /tmp/dotnet-install.sh
+
+- name: Make dotnet-install.sh executable
+  file:
+    path: /tmp/dotnet-install.sh
+    mode: +x
+
+- name: Install the latest version of .NET
+  command: /tmp/dotnet-install.sh --version latest
+  args:
+    chdir: /tmp/
+
+- name: Install the latest version of ASP.NET Core runtime
+  command: /tmp/dotnet-install.sh --version latest --runtime aspnetcore
+  args:
+    chdir: /tmp/
+
+- name: Install .NET SDK 8.0
+  command: /tmp/dotnet-install.sh --channel 8.0
+  args:
+    chdir: /tmp/
+
+# - name: Set environment variables
+#   lineinfile:
+#     path: /etc/profile.d/dotnet.sh
+#     line: |
+#       export DOTNET_ROOT=$HOME/.dotnet
+#       export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+- name: Set environment variables
+  ansible.builtin.shell: export DOTNET_ROOT=$HOME/.dotnet
+
+- name: Set environment variables123
+  ansible.builtin.shell: export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools

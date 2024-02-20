@@ -1,0 +1,13 @@
+[Unit]
+Description=cart
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app/src
+Environment=REDIS_ADDR={{REDIS_ADDR}}:6379
+Environment=PORT=7070
+ExecStart=/root/.dotnet/dotnet /app/src/bin/Release/net8.0/cartservice.dll --urls http://0.0.0.0:7070
+SyslogIdentifier=cartservice
+
+[Install]
+WantedBy=multi-user.target

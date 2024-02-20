@@ -1,0 +1,14 @@
+[Unit]
+Description=payment
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+
+Environment=PORT=50051
+Environment=DISABLE_PROFILER=1
+ExecStart=/root/.nvm/versions/node/v20.11.1/bin/node /app/index.js
+SyslogIdentifier=payment
+
+[Install]
+WantedBy=multi-user.target

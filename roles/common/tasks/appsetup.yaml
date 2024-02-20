@@ -1,0 +1,26 @@
+- name: cloning a git repository
+  git:
+    repo: https://github.com/srikanthhg/google-10-microservices-project.git
+    dest: /tmp/google-10-microservices-project
+    clone: yes
+    update: yes
+
+- name: create hipstershop user
+  ansible.builtin.user:
+    name: hipstershop
+
+- name: Recursively remove app directory
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: create app directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: copy app from tmp to app directory
+  ansible.builtin.copy: 
+    src: /tmp/google-10-microservices-project/{{component}}/
+    dest: /app/
+    remote_src: yes

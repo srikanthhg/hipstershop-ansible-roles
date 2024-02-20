@@ -1,0 +1,12 @@
+[Unit]
+Description=email
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+Environment=DISABLE_PROFILER=1
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=8080
+
+ExecStart=python3.12 /app/email_server.py
+SyslogIdentifier=emailservice

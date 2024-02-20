@@ -1,0 +1,15 @@
+[Unit]
+Description=ad
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+
+Environment=DISABLE_PROFILER=1
+Environment=PORT=9555
+
+ExecStart=/app/build/install/hipstershop/bin/AdService
+SyslogIdentifier=adservice
+
+[Install]
+WantedBy=multi-user.target

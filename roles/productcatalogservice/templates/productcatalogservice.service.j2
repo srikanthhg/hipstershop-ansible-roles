@@ -1,0 +1,13 @@
+[Unit]
+Description=productcatalog
+
+[Service]
+User=hipstershop
+WorkingDirectory=/app
+Environment=PORT=3550
+
+ExecStart=/app/mycatalog
+SyslogIdentifier=productcatalogservice
+
+[Install]
+WantedBy=multi-user.target
