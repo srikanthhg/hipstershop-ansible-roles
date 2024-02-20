@@ -3,5 +3,7 @@
   vars_files:
   - variables.yaml
   become: yes
+  become_user: ec2-user
+  become_method: su
   roles:
   - "{{component}}"
