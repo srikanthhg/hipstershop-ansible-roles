@@ -25,6 +25,6 @@
   when: nvm_install_result.rc == 0
     
 - name: Install dependencies
-  ansible.builtin.shell: "/root/.nvm/versions/node/v20.11.1/bin/npm install"
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.nvm/versions/node/v20.11.1/bin/npm install"
   args:
-    chdir: /app/
+    chdir: /app
