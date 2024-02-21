@@ -21,7 +21,7 @@
     mode: "+x"
 
 - name: install nvm
-  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 20"
   args:
     executable: /bin/bash
     
