@@ -26,6 +26,7 @@
     executable: /bin/bash
     
 - name: Install dependencies
-  ansible.builtin.shell: "npm install"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && npm install"
   args:
+    executable: /bin/bash
     chdir: /app
