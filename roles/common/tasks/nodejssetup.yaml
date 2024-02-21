@@ -24,7 +24,6 @@
   ansible.builtin.shell: |
     "nvm install --lts"
   args:
-    chdir: "{{ ansible_env.HOME }}"
     executable: /bin/bash
     creates: /home/your_username/.nvm/versions/node/ 
   when: nvm_install_result.rc == 0
