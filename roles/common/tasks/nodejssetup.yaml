@@ -24,8 +24,7 @@
   ansible.builtin.shell: |
     "nvm install --lts"
   args:
-    executable: /bin/bash
-    creates: /home/ec2-user/.nvm/versions/node/ 
+    path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   when: nvm_install_result.rc == 0
     
 - name: Install dependencies
