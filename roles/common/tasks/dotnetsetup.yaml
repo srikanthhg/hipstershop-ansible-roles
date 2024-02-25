@@ -40,8 +40,8 @@
   ansible.builtin.shell:
     cmd: |
       cd /app/src
-      dotnet restore cartservice.csproj -r linux-musl-x64 \
-      && dotnet publish cartservice.csproj \
+      /home/ec2-user/.dotnet restore cartservice.csproj -r linux-musl-x64 \
+      && /home/ec2-user/.dotnet publish cartservice.csproj \
         -p:PublishSingleFile=true \
         -r linux-musl-x64 \
         --self-contained true \
@@ -50,6 +50,6 @@
         -c release \
         -o /tmp/cartservice-publish \
         --no-restore \
-      && dotnet publish -c Release -o out
+      && /home/ec2-user/.dotnet publish -c Release -o out
   args:
     chdir: /app/src/
