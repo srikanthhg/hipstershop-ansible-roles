@@ -5,13 +5,13 @@
 
 - name: Make dotnet-install.sh executable
   file:
-    path: /tmp/dotnet-install.sh && dotnet-install.sh --version latest && dotnet-install.sh --version latest --runtime aspnetcore && dotnet-install.sh --channel 8.0
+    path: /tmp/dotnet-install.sh 
     mode: +x
 
-# - name: Install the latest version of .NET
-#   ansible.builtin.shell: dotnet-install.sh --version latest
-#   args:
-#     chdir: /tmp/
+- name: Install the latest version of .NET
+  ansible.builtin.shell: /tmp/dotnet-install.sh --version latest
+  # args:
+  #   chdir: /tmp/
 
 # - name: Install the latest version of ASP.NET Core runtime
 #   ansible.builtin.shell: dotnet-install.sh --version latest --runtime aspnetcore
@@ -21,7 +21,7 @@
 # - name: Install .NET SDK 8.0
 #   ansible.builtin.shell: dotnet-install.sh --channel 8.0
 #   args:
-#     chdir: /tmp/
+    chdir: /tmp/
 
 # - name: Set environment variables
 #   lineinfile:
