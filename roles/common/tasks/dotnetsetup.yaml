@@ -21,7 +21,7 @@
 # - name: Install .NET SDK 8.0
 #   ansible.builtin.shell: dotnet-install.sh --channel 8.0
 #   args:
-    chdir: /tmp/
+#   chdir: /tmp/
 
 # - name: Set environment variables
 #   lineinfile:
