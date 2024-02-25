@@ -9,19 +9,19 @@
     mode: +x
 
 - name: Install the latest version of .NET
-  ansible.builtin.shell: /tmp/dotnet-install.sh --version latest
-  # args:
-  #   chdir: /tmp/
+  ansible.builtin.shell: dotnet-install.sh --version latest
+  args:
+    chdir: /tmp/
 
 - name: Install the latest version of ASP.NET Core runtime
-  ansible.builtin.shell: /tmp/dotnet-install.sh --version latest --runtime aspnetcore
-  # args:
-  #   chdir: /tmp/
+  ansible.builtin.shell: dotnet-install.sh --version latest --runtime aspnetcore
+  args:
+    chdir: /tmp/
 
 - name: Install .NET SDK 8.0
-  ansible.builtin.shell: /tmp/dotnet-install.sh --channel 8.0
-  # args:
-  #   chdir: /tmp/
+  ansible.builtin.shell: dotnet-install.sh --channel 8.0
+  args:
+    chdir: /tmp/
 
 # - name: Set environment variables
 #   lineinfile:
