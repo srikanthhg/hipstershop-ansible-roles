@@ -10,18 +10,18 @@
 
 - name: Install the latest version of .NET
   command: /tmp/dotnet-install.sh --version latest
-  args:
-    chdir: /tmp/
+  # args:
+  #   chdir: /tmp/
 
 - name: Install the latest version of ASP.NET Core runtime
   command: /tmp/dotnet-install.sh --version latest --runtime aspnetcore
-  args:
-    chdir: /tmp/
+  # args:
+  #   chdir: /tmp/
 
 - name: Install .NET SDK 8.0
   command: /tmp/dotnet-install.sh --channel 8.0
-  args:
-    chdir: /tmp/
+  # args:
+  #   chdir: /tmp/
 
 # - name: Set environment variables
 #   lineinfile:
@@ -37,10 +37,11 @@
   ansible.builtin.shell: export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 - name: Dotnet restore, Publish, release
-  ansible.builtin.command:
+  ansible.builtin.shell:
     cmd: |
+      cd /app/src
       dotnet restore cartservice.csproj -r linux-musl-x64 \
-      dotnet publish cartservice.csproj \
+      && dotnet publish cartservice.csproj \
         -p:PublishSingleFile=true \
         -r linux-musl-x64 \
         --self-contained true \
@@ -49,6 +50,6 @@
         -c release \
         -o /tmp/cartservice-publish \
         --no-restore \
-      dotnet publish -c Release -o out
+      && dotnet publish -c Release -o out
   args:
     chdir: /app/src/
