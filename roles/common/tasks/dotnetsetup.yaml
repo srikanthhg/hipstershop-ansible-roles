@@ -35,3 +35,20 @@
 
 - name: Set environment variables123
   ansible.builtin.shell: export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+- name: Dotnet restore, Publish, release
+  ansible.builtin.command:
+    cmd: |
+      dotnet restore cartservice.csproj -r linux-musl-x64 \
+      dotnet publish cartservice.csproj \
+        -p:PublishSingleFile=true \
+        -r linux-musl-x64 \
+        --self-contained true \
+        -p:PublishTrimmed=True \
+        -p:TrimMode=Full \
+        -c release \
+        -o /tmp/cartservice-publish \
+        --no-restore \
+      dotnet publish -c Release -o out
+  args:
+    chdir: /app/src/
