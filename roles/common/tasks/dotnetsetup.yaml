@@ -9,7 +9,13 @@
     mode: +x
 
 - name: Install the latest version of .NET
-  ansible.builtin.shell: /tmp/dotnet-install.sh --version latest
+  ansible.builtin.shell: 
+    cmd: | 
+      /tmp/dotnet-install.sh --version latest
+      /tmp/dotnet-install.sh --version latest --runtime aspnetcore
+      /tmp/dotnet-install.sh --channel 8.0
+  args:
+    executable: /bin/bash
   environment:
     DOTNET_ROOT: "{{ ansible_env.HOME }}/.dotnet"
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.dotnet:{{ ansible_env.HOME }}/.dotnet/tools"
