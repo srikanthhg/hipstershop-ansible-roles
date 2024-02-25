@@ -30,3 +30,5 @@
   args:
     executable: /bin/bash
     chdir: /app
+
+#https://stackoverflow.com/questions/53596477/ansible-install-node-with-nvm
