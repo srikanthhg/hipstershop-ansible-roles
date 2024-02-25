@@ -11,6 +11,8 @@
 - name: Install the latest version of .NET
   ansible.builtin.shell: 
     cmd: | 
+      export DOTNET_ROOT="{{ ansible_env.HOME }}/.dotnet"
+      export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
       /tmp/dotnet-install.sh --version latest
       /tmp/dotnet-install.sh --version latest --runtime aspnetcore
       /tmp/dotnet-install.sh --channel 8.0
