@@ -17,9 +17,9 @@
 - name: download repos and install dist
   ansible.builtin.shell:
     cmd: "{{ item }}"
-    with_items: 
-    - "./gradlew downloadRepos"
-    - "./gradlew installDist"
+  with_items: 
+  - "./gradlew downloadRepos"
+  - "./gradlew installDist"
   args:
     chdir: /app
 
