@@ -11,7 +11,7 @@
 
 - name: execute permissions
   ansible.builtin.file:
-    src: /app/gradlew
+    path: /app/gradlew
     mode: +x
 
 - name: download repos and install dist
