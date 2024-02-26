@@ -30,8 +30,8 @@
   args:
     executable: /bin/bash
     chdir: /app
-  environment:
-    PORT: 7000
-    DISABLE_PROFILER: 1 
+  # environment:
+  #   PORT: 7000
+  #   DISABLE_PROFILER: 1 
 
 #https://stackoverflow.com/questions/53596477/ansible-install-node-with-nvm
