@@ -4,9 +4,8 @@ Description=currency
 [Service]
 User=root
 WorkingDirectory=/app/
-Environment=PORT=7000
 Environment=DISABLE_PROFILER=1
-
+Environment=PORT=7000
 ExecStart=node /app/server.js
 SyslogIdentifier=currencyservice
 
