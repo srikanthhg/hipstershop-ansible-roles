@@ -1,0 +1,9 @@
+- name: "restart {{component}}"
+  hosts: "{{component}}"
+  become: yes
+  tasks:
+  - name : restart services
+    ansible.builtin.service:
+      name: "{{component}}"
+      state: restarted
+      enabled: yes
