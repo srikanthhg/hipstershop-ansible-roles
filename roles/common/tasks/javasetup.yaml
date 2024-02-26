@@ -15,7 +15,7 @@
     mode: +x
 
 - name: download repos and install dist
-  ansible.builtin.command:
+  ansible.builtin.shell:
     cmd: "{{ item }}"
     with_items: 
     - "./gradlew downloadRepos"
