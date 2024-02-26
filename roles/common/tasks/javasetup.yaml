@@ -7,6 +7,7 @@
   ansible.builtin.package:
     name: /tmp/jdk-19.0.2_linux-x64_bin.rpm
     state: present
+    disable_gpg_check: true
 
 - name: execute permissions
   ansible.builtin.file:
