@@ -8,7 +8,7 @@
  # ansible.builtin.command: amazon-linux-extras install redis6 -y
 
 - name: install redis
-  ansible.builtin.package: 
+  #ansible.builtin.package: 
   community.general.amazon.aws.amazon_linux_extras:
     name: redis6
     state: present
