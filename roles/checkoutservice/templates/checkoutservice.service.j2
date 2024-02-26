@@ -11,10 +11,9 @@ Environment=EMAIL_SERVICE_ADDR={{EMAIL_SERVICE_ADDR}}:8080
 Environment=CURRENCY_SERVICE_ADDR={{CURRENCY_SERVICE_ADDR}}:7000
 Environment=CART_SERVICE_ADDR={{CART_SERVICE_ADDR}}:7070
 
-Environment=PORT=5050
 Environment=DISABLE_PROFILER=1
-
-ExecStart=/app/mycheckout
+Environment=PORT=5050
+ExecStart=/app/mycheckoutservice
 SyslogIdentifier=checkoutservice
 
 [Install]
