@@ -9,6 +9,7 @@
 
 - name: install redis
   ansible.builtin.package: 
+  community.general.amazon.aws.amazon_linux_extras:
     name: redis6
     state: present
 
