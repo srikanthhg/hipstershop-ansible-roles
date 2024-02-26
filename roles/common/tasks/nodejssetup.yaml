@@ -26,9 +26,12 @@
     executable: /bin/bash
     
 - name: Install dependencies
-  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && npm install"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && npm install && npm install -g npm@10.4.0"
   args:
     executable: /bin/bash
     chdir: /app
+  environment:
+    PORT: 7000
+    DISABLE_PROFILER: 1 
 
 #https://stackoverflow.com/questions/53596477/ansible-install-node-with-nvm
