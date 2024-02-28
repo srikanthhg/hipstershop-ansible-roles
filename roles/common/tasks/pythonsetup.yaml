@@ -33,6 +33,7 @@
     - ./configure
     - make
     - "make altinstall"
+  ignore_errors: true
 
 - name: install dependencies and build
   ansible.builtin.command: pip3.12 install -r requirements.txt
