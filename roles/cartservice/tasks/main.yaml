@@ -11,7 +11,7 @@
 - name: install dotnet
   ansible.builtin.import_role:
     name: common
-    tasks_from: dotnetsetup
+    tasks_from: dotnet-setup
 
 - name: setup systemd
   ansible.builtin.import_role:

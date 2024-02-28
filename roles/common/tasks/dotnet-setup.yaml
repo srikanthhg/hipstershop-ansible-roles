@@ -1,0 +1,27 @@
+- name: Copy mongodb repo
+  ansible.builtin.copy:
+    src: dotnet.repo
+    dest: /etc/yum.repos.d/dotnet.repo
+
+- name: install dotnet
+  ansible.builtin.package:
+    name: dotnet-sdk-8.0
+    state: present
+
+- name: Dotnet restore, Publish, release
+  ansible.builtin.shell:
+    cmd: |
+      cd /app/src
+      {{ ansible_env.HOME }}/.dotnet/dotnet restore cartservice.csproj -r linux-musl-x64 \
+      && {{ ansible_env.HOME }}/.dotnet/dotnet publish cartservice.csproj \
+        -p:PublishSingleFile=true \
+        -r linux-musl-x64 \
+        --self-contained true \
+        -p:PublishTrimmed=True \
+        -p:TrimMode=Full \
+        -c release \
+        -o /tmp/cartservice-publish \
+        --no-restore \
+      && {{ ansible_env.HOME }}/.dotnet/dotnet publish -c Release -o out
+  args:
+    chdir: /app/src/
