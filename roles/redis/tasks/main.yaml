@@ -1,12 +1,12 @@
 - name: install remi release
-  ansible.builtin.package: #yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm # check package will work not
-    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-    state: present
-    disable_gpg_check: true
+  ansible.builtin.shell: yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm # check package will work not
+    # name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    # state: present
+    # disable_gpg_check: true
 
 # - name: install redis
 #   ansible.builtin.shell: amazon-linux-extras install redis6 -y
-- name: install redis
+- name: install redis6
   ansible.builtin.package:
    name: redis6
    state: present
