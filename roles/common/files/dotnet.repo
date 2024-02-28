@@ -1,7 +1,7 @@
-[amazonlinux2023prod]
-name=amazonlinux/2023/prod
-baseurl=https://packages.microsoft.com/amazonlinux/2023/prod/
+[fedora37prod]
+name=fedora/37/prod
+baseurl=https://packages.microsoft.com/fedora/37/prod/
 repo_gpgcheck=0
 gpgcheck=0
 enabled=1
-gpgkey=https://packages.microsoft.com/amazonlinux/2023/prod/repodata/repomd.xml.key
+gpgkey=https://packages.microsoft.com/fedora/37/prod/repodata/repomd.xml.key

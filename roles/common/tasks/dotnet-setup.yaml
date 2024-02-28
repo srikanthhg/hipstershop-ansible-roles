@@ -1,4 +1,4 @@
-- name: Copy mongodb repo
+- name: Copy dotnet repo
   ansible.builtin.copy:
     src: dotnet.repo
     dest: /etc/yum.repos.d/dotnet.repo
