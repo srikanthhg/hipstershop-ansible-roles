@@ -1,5 +1,5 @@
-- name: install remi release
-  ansible.builtin.shell: yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm # check package will work not
+#- name: install remi release
+#  ansible.builtin.shell: yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm # check package will work not
     # name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
     # state: present
     # disable_gpg_check: true
