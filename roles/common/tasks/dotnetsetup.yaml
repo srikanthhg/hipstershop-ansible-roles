@@ -1,3 +1,4 @@
+# amazon linux 2
 - name: Download dotnet-install.sh script
   get_url:
     url: https://dot.net/v1/dotnet-install.sh
