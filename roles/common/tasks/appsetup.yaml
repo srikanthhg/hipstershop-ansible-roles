@@ -23,4 +23,4 @@
   ansible.builtin.copy: 
     src: /tmp/google-10-microservices-project/{{component}}/
     dest: /app/
-    remote_src: yes
+    # remote_src: yes
