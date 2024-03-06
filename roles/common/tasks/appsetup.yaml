@@ -1,9 +1,9 @@
-- name: cloning a git repository
-  git:
-    repo: https://github.com/srikanthhg/google-10-microservices-project.git
-    dest: /tmp/google-10-microservices-project
-    clone: yes
-    update: yes
+# - name: cloning a git repository
+#   git:
+#     repo: https://github.com/srikanthhg/google-10-microservices-project.git
+#     dest: /tmp/google-10-microservices-project
+#     clone: yes
+#     update: yes
 
 - name: create hipstershop user
   ansible.builtin.user:
